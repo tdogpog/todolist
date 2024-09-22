@@ -8,46 +8,56 @@
 
 </head>
 <body>
+
     <div id="sidebar">
         <div class="user"> 
             <span>User Name</span>
         </div>
-        <div class="addTask sidebarItem">
+        <div class="addTask" id="taskAdder">
             <span>Add Task</span></div>
-        <div class="today sidebarItem"><span>Today</span>
+        <div class="today sidebarItem" id="filterToday"><span>Today</span>
         </div>
-        <div class="weekly sidebarItem">
+        <div class="weekly sidebarItem" id="filterWeek">
             <span>This week</span>
         </div>
-        <div class="allTasks sidebarItem">
+        <div class="allTasks sidebarItem" id="filterAll">
             <span>All Tasks</span>
         </div>
         <div class="myProjects"> 
             <span>My Projects</span>
         </div>
     </div>
+
     <div id="main">
         <div class="mainItem">
             <div class="taskContainer">
-                <div class="taskContainerHeader"><h1>Tasks</h1></div>
-                <div class="taskCounter"><span>Value</span></div>
-                <div class="taskItem">
-                    <div class="taskCheckmark">
-                        <input type="checkbox">
-                    </div>
-                    <div class="taskBody">
-                        <div class="taskHeader"><span>Task Name</span></div>
-                        <div class="taskDescription"><span>Task Description</span></div>
-                        <div class="priority"><span>Priority Level</span></div>
-                        <div class="date"><span>Date</span></div>
-                    </div>
-                    <div class="taskDelete">
-                        <button>delete</button>
-                    </div>
-
+                <div class="taskContainerHeader"><h1><span>Tasks</span></h1></div>
+                <div class="taskCounter"><span>Tasks:0</span></div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div id="newEntry">
+        <form id="form">
+            <input type="text" id="task" class="entryInputs" placeholder="Task">
+            <input type="text" id="description" class="entryInputs" placeholder="Task Description">
+            <input type="date" class="entryInputs">
+
+            <div id="formBottom">
+                <select name="options" id="projectDropdown">
+                    <option value="test1">Test1</option>
+                    <option value="test2">Test2</option>
+                    <option value="test3">Test3</option>
+                </select>
+                <button id="submit" type="submit">Add Task</button>
+            </div>
+            
+
+        </form>
+    </div>
+
+    <div id="darken"></div>
+
 </body>
 </html>
