@@ -2,7 +2,13 @@ import './styles.css';
 
 import {headerUpdate} from './headerUpdater.js'
 
-import {addDisplay,processInputs,displayTasks,CategoryManager} from './addTask.js'
+import {addDisplay} from './addTask.js'
+
+import { displayTasks } from './displayTasks.js';
+
+import { processInputs } from './processInputs.js';
+
+import {CategoryManager} from './CategoryManager.js';
 
 
 headerUpdate();
