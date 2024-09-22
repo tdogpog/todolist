@@ -1,1 +1,72 @@
-<head><script defer src="main.js"></script></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script defer src="main.js"></script></head>
+<body>
+
+    <div id="sidebar">
+        <div class="user"> 
+            <span>User Name</span>
+        </div>
+        <div class="addTask" id="taskAdder">
+            <span>Add Task</span></div>
+        <div class="today sidebarItem" id="filterToday"><span>Today</span>
+        </div>
+        <div class="weekly sidebarItem" id="filterWeek">
+            <span>This week</span>
+        </div>
+        <div class="allTasks sidebarItem" id="filterAll">
+            <span>All Tasks</span>
+        </div>
+        <div class="myProjects"> 
+            <span>My Projects<button id="addCategoryButton">+</button></span>
+            <div class="categoryItem">
+                <span>Cooking</span>
+                <button class="deleteCategory">X</button>
+            </div>
+            <div class="categoryItem"><span>School</span><button class="deleteCategory">X</button></div>
+            
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="mainItem">
+            <div class="taskContainer">
+                <div class="taskContainerHeader"><h1><span>Tasks</span></h1></div>
+                <div class="taskCounter"><span>Tasks:0</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="newEntry">
+        <form id="form">
+            <input type="text" id="task" class="entryInputs" placeholder="Task">
+            <input type="text" id="description" class="entryInputs" placeholder="Task Description">
+            <input type="date" class="entryInputs">
+
+            <div id="formBottom">
+                <select name="options" id="projectDropdown">
+                    <option value="Cooking">Cooking</option>
+                    <option value="School">School</option>
+                </select>
+                <button id="submit" type="submit">Add Task</button>
+            </div>
+            
+
+        </form>
+    </div>
+
+    <div id="darken"></div>
+    <div id="categoryPopup" style="display:none;">
+        <input type="text" id="newCategoryInput" placeholder="New Category">
+        <button id="submitCategoryButton">Add</button>
+    </div>
+
+</body>
+</html>
