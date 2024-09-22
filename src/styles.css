@@ -6,8 +6,19 @@
 
 body{
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 300px auto;
+    height: 100vh;
     
+}
+
+#darken{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    display: none;
 }
 
 #sidebar{
@@ -39,14 +50,31 @@ body{
     transition: background-color 0.3s ease;
     border-radius: 10px;
     padding:10px;
+    cursor: pointer;
 }
+
+#taskAdder{
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    padding:10px;
+    cursor: pointer;
+}
+
+#taskAdder:hover{
+    background-color: #c0c0c0;
+}
+
 
 .user{
     padding: 10px;
 }
 
 .myProjects{
+    display: flex;
     padding: 10px;
+    line-height: 2;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .mainItem{
@@ -77,4 +105,79 @@ body{
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+#newEntry{
+    position: fixed;
+    z-index: 1;
+    top: 30%;
+    left: 50%;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    width: 250px;
+    height: 200px;
+    display: flex;
+    padding: 20px;
+    transform: translate(-50%,-50%);
+    gap: 8px;
+    display: none;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 20px;
+    display: none;
+}
+
+.entryInputs{
+    border-style: none;
+}
+
+#formBottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+select{
+    border-style: none;
+    border-radius: 6px;
+}
+
+button{
+    border-style: none;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+#categoryPopup {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 20;
+    display: none; /* Initially hidden */
+    border-radius: 10px;
+}
+
+
+.categoryItem:hover:not(.deleteCategory) {
+    background-color: #c0c0c0;
+}
+
+.categoryItem{
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.myProjects span{
+    display: flex;
+    justify-content: space-between;
 }

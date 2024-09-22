@@ -121,12 +121,14 @@ export class displayTasks{
     filterTasksByCategory(category, categoryName) {
         const filteredTasks = this.taskArray.filter(task => task.dropdownVal === category);
         this.renderFilteredTasks(filteredTasks);
-        this.updateTaskContainerHeader(categoryName); // Call the method to update the header
+        // call the method to update the header
+        this.updateTaskContainerHeader(categoryName); 
     }
 
     updateTaskContainerHeader(categoryName) {
         const taskContainerHeader = document.querySelector('.taskContainerHeader span');
-        taskContainerHeader.textContent = categoryName ? categoryName : 'Tasks'; // Set to category name or default to 'Tasks'
+        // set to category name or default to 'Tasks'
+        taskContainerHeader.textContent = categoryName ? categoryName : 'Tasks'; 
     }
 
     filterTasksByDate(filterType) {
@@ -154,7 +156,7 @@ export class displayTasks{
                 return taskDate >= startOfWeek && taskDate <= endOfWeek;
             });
         } else {
-            filteredTasks = this.taskArray; // For "all tasks"
+            filteredTasks = this.taskArray; 
         }
     
         this.renderFilteredTasks(filteredTasks);
@@ -195,9 +197,12 @@ export class CategoryManager {
         this.newCategoryInput = newCategoryInput;
         this.submitCategoryButton = submitCategoryButton;
         this.projectDropdown = projectDropdown;
+        //object will need access to refreshing the display
         this.taskDisplay = taskDisplay;
         this.setupEventListeners();
-        this.initializeDefaultCategories(); // Initialize default categories when the class is instantiated
+        //init default cases i inserted when page loads
+        //since obj is instatiated as page loads6
+        this.initializeDefaultCategories(); 
     }
 
     setupEventListeners() {
@@ -307,15 +312,21 @@ export class CategoryManager {
     
         // Event listener for filtering tasks by category
         categoryItem.addEventListener('click', (e) => {
+            //this is for delete button listener
+            //if event object didnt contain the deleteCategory,
+            //we weren't clicking the delete button
+            //if it did, we clicked the delete button
+            //consequences of having two elemetns in same div
             if (!e.target.classList.contains('deleteCategory')) {
                 this.filterTasksByCategory(categoryName);
-                this.taskDisplay.updateTaskContainerHeader(categoryName); // This should work now
+                this.taskDisplay.updateTaskContainerHeader(categoryName); 
             }
         });
     
         // Event listener for deleting category
         deleteButton.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent triggering the category click event when deleting
+            // prevent triggering the category click event when deleting
+            e.stopPropagation();
             this.deleteCategory(categoryName, categoryItem);
         });
     
