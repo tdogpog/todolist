@@ -2,7 +2,7 @@ import './styles.css';
 
 import {headerUpdate} from './headerUpdater.js'
 
-import {addDisplay,processInputs,displayTasks} from './addTask.js'
+import {addDisplay,processInputs,displayTasks,CategoryManager} from './addTask.js'
 
 
 headerUpdate();
@@ -24,12 +24,18 @@ const descriptionInput = document.querySelector('#description');
 const dateInput = document.querySelector('input[type="date"]');
 const dropdownInput = document.querySelector('#projectDropdown');
 
+//category class
+const addCategoryButton = document.getElementById('addCategoryButton');
+const categoryPopup = document.getElementById('categoryPopup');
+const newCategoryInput = document.getElementById('newCategoryInput');
+const submitCategoryButton = document.getElementById('submitCategoryButton');
+const projectDropdown = document.getElementById('projectDropdown');
 
 // set up objects from our class
 const display = new addDisplay(formElement, formContainer,taskAdder, darkenElement);
 const inputProcessor = new processInputs(taskInput, descriptionInput, dateInput, dropdownInput);
 const taskDisplay = new displayTasks(taskArray);
- 
+const categoryManager = new CategoryManager(darkenElement, addCategoryButton, categoryPopup, newCategoryInput, submitCategoryButton, projectDropdown, taskDisplay); 
 // event listener for form submit
 formElement.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevent form from refreshing page
@@ -53,4 +59,13 @@ document.getElementById('filterWeek').addEventListener('click', () => {
 
 document.getElementById('filterAll').addEventListener('click', () => {
     taskDisplay.setFilter('all');
+});
+
+
+const defaultCategories = document.querySelectorAll('.categoryItem');
+defaultCategories.forEach(categoryItem => {
+    categoryItem.addEventListener('click', () => {
+        const categoryName = categoryItem.querySelector('span').textContent.trim(); 
+        categoryManager.filterTasksByCategory(categoryName);
+    });
 });
