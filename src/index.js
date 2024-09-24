@@ -42,17 +42,24 @@ const display = new addDisplay(formElement, formContainer,taskAdder, darkenEleme
 const inputProcessor = new processInputs(taskInput, descriptionInput, dateInput, dropdownInput);
 const taskDisplay = new displayTasks(taskArray);
 const categoryManager = new CategoryManager(darkenElement, addCategoryButton, categoryPopup, newCategoryInput, submitCategoryButton, projectDropdown, taskDisplay); 
+
 // event listener for form submit
-formElement.addEventListener('submit', (e) => {
+
+formElement.addEventListener('submit', (e) => { 
     e.preventDefault(); // Prevent form from refreshing page
+    console.log('hello')
 
     // Get the task data from the input processor
     const taskData = inputProcessor.getInputData();
     
-    // If valid task data, add it to the task display
-    if (taskData) {
-        taskDisplay.addTask(taskData);
+  
+    // if taskData is null, exit early. No need to check taskData.task.
+    if (taskData === null) {
+        return; // Exit if validation fails
     }
+
+    // If valid task data, add it to the task display
+    taskDisplay.addTask(taskData);
 });
 
 document.getElementById('filterToday').addEventListener('click', () => {

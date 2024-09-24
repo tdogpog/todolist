@@ -13,6 +13,8 @@ export class processInputs{
         const dateVal=this.dateInput.value;
         const dropdownVal=this.dropdownInput.value;
 
+        
+
         if(!task){
             alert('Please name the task');
             return null;
